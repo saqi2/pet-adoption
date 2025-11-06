@@ -1,0 +1,384 @@
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  const mockResponse = {
+    animals: [
+      {
+        id: 71922454,
+        organization_id: "TX2312",
+        url: "https://www.petfinder.com/dog/canelo-71922454/tx/dallas/dallas-animal-services-tx2312/",
+        type: "Dog",
+        species: "Dog",
+        breeds: {
+          primary: "German Shepherd Dog",
+          secondary: null,
+          mixed: false,
+          unknown: false
+        },
+        colors: {
+          primary: "Brown/Chocolate",
+          secondary: null,
+          tertiary: null
+        },
+        age: "Adult",
+        gender: "Male",
+        size: "Large",
+        coat: "Short",
+        attributes: {
+          spayed_neutered: true,
+          house_trained: false,
+          declawed: null,
+          special_needs: false,
+          shots_current: true
+        },
+        environment: {
+          children: null,
+          dogs: null,
+          cats: null
+        },
+        tags: [],
+        name: "Canelo",
+        description: "Hi, I’m Canelo! I’m a big sweetheart looking for a family to love.",
+        photos: [
+          {
+            small: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922454/1/?bust=1730381880&width=100",
+            medium: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922454/1/?bust=1730381880&width=300",
+            large: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922454/1/?bust=1730381880&width=600",
+            full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922454/1/?bust=1730381880"
+          }
+        ],
+        status: "adoptable",
+        published_at: "2024-10-31T15:18:00+0000",
+        contact: {
+          email: "dasadopt@dallascityhall.com",
+          phone: "214-670-6800",
+          address: {
+            address1: "1818 North Westmoreland Road",
+            address2: null,
+            city: "Dallas",
+            state: "TX",
+            postcode: "75212",
+            country: "US"
+          }
+        },
+        _links: {
+          self: { href: "/v2/animals/71922454" },
+          type: { href: "/v2/types/dog" },
+          organization: { href: "/v2/organizations/TX2312" }
+        }
+      },
+      {
+        id: 71922466,
+        organization_id: "CA2391",
+        url: "https://www.petfinder.com/dog/bobo-71922466/ca/san-diego/san-diego-humane-society-ca2391/",
+        type: "Dog",
+        species: "Dog",
+        breeds: {
+          primary: "Mixed Breed",
+          secondary: null,
+          mixed: true,
+          unknown: false
+        },
+        colors: {
+          primary: "White",
+          secondary: "Black",
+          tertiary: null
+        },
+        age: "Young",
+        gender: "Male",
+        size: "Medium",
+        coat: "Short",
+        attributes: {
+          spayed_neutered: true,
+          house_trained: true,
+          declawed: null,
+          special_needs: false,
+          shots_current: true
+        },
+        environment: {
+          children: true,
+          dogs: true,
+          cats: true
+        },
+        tags: ["Playful", "Loves treats", "Good with dogs"],
+        name: "Bobo",
+        description: "Bobo is a playful young pup who enjoys fetch and belly rubs!",
+        photos: [
+          {
+            small: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922466/1/?bust=1730382600&width=100",
+            medium: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922466/1/?bust=1730382600&width=300",
+            large: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922466/1/?bust=1730382600&width=600",
+            full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922466/1/?bust=1730382600"
+          }
+        ],
+        status: "adoptable",
+        published_at: "2024-10-31T16:35:00+0000",
+        contact: {
+          email: "adoptions@sdhumane.org",
+          phone: "(619) 299-7012",
+          address: {
+            address1: "5500 Gaines Street",
+            address2: null,
+            city: "San Diego",
+            state: "CA",
+            postcode: "92110",
+            country: "US"
+          }
+        },
+        _links: {
+          self: { href: "/v2/animals/71922466" },
+          type: { href: "/v2/types/dog" },
+          organization: { href: "/v2/organizations/CA2391" }
+        }
+      }
+    ],
+    pagination: {
+      count_per_page: 20,
+      total_count: 14567,
+      current_page: 1,
+      total_pages: 729,
+      _links: {
+        next: { href: "/v2/animals?page=2" }
+      }
+    }
+  };
+
+  console.log(mockResponse, 'mock response')
+  return NextResponse.json(mockResponse);
+}
+
+
+import { NextResponse } from "next/server";
+
+
+
+export async function GET(
+  _request: Request,
+  { params }: { params: { id: string } }
+) {
+    const mockAnimals = [
+  {
+    id: 71922454,
+    organization_id: "TX2312",
+    url: "https://www.petfinder.com/dog/canelo-71922454/tx/dallas/dallas-animal-services-tx2312/",
+    type: "Dog",
+    species: "Dog",
+    breeds: {
+      primary: "German Shepherd Dog",
+      secondary: null,
+      mixed: false,
+      unknown: false
+    },
+    colors: {
+      primary: "Brown/Chocolate",
+      secondary: null,
+      tertiary: null
+    },
+    age: "Adult",
+    gender: "Male",
+    size: "Large",
+    coat: "Short",
+    attributes: {
+      spayed_neutered: true,
+      house_trained: false,
+      special_needs: false,
+      shots_current: true
+    },
+    name: "Canelo",
+    description: "Hi, I’m Canelo! I’m a big sweetheart looking for a family to love.",
+    photos: [
+      {
+        small: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922454/1/?bust=1730381880&width=100",
+        medium: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922454/1/?bust=1730381880&width=300",
+        large: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922454/1/?bust=1730381880&width=600",
+        full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922454/1/?bust=1730381880"
+      }
+    ],
+    status: "adoptable",
+    contact: {
+      email: "dasadopt@dallascityhall.com",
+      phone: "214-670-6800",
+      address: {
+        address1: "1818 North Westmoreland Road",
+        city: "Dallas",
+        state: "TX",
+        postcode: "75212",
+        country: "US"
+      }
+    }
+  },
+  {
+    id: 71922466,
+    organization_id: "CA2391",
+    url: "https://www.petfinder.com/dog/bobo-71922466/ca/san-diego/san-diego-humane-society-ca2391/",
+    type: "Dog",
+    species: "Dog",
+    breeds: {
+      primary: "Mixed Breed",
+      secondary: null,
+      mixed: true,
+      unknown: false
+    },
+    colors: {
+      primary: "White",
+      secondary: "Black",
+      tertiary: null
+    },
+    age: "Young",
+    gender: "Male",
+    size: "Medium",
+    coat: "Short",
+    attributes: {
+      spayed_neutered: true,
+      house_trained: true,
+      special_needs: false,
+      shots_current: true
+    },
+    name: "Bobo",
+    description: "Bobo is a playful young pup who enjoys fetch and belly rubs!",
+    photos: [
+      {
+        small: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922466/1/?bust=1730382600&width=100",
+        medium: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922466/1/?bust=1730382600&width=300",
+        large: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922466/1/?bust=1730382600&width=600",
+        full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71922466/1/?bust=1730382600"
+      }
+    ],
+    status: "adoptable",
+    contact: {
+      email: "adoptions@sdhumane.org",
+      phone: "(619) 299-7012",
+      address: {
+        address1: "5500 Gaines Street",
+        city: "San Diego",
+        state: "CA",
+        postcode: "92110",
+        country: "US"
+      }
+    }
+  }
+];
+
+  const { id } = await params;
+  console.log(mockAnimals, ': mock animals')
+
+  let animal = mockAnimals?.find(a => String(a.id) == String(id));
+  
+
+  if (!animal) {
+    return NextResponse.json(
+      { error: "Animal not found" },
+      { status: 404 }
+    );
+  }
+
+  return NextResponse.json(animal);
+}
+
+
+
+//actual api base url
+// const BASE_URL = "https://api.petfinder.com/v2";
+
+//mock api base url
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000/api/v2";
+
+let token: string | null = "";
+let tokenExpiry = 0;
+
+export async function getAccessToken() {
+  const now = Date.now();
+  console.log("Using Petfinder credentials:", {
+    key: process.env.PETFINDER_KEY,
+    secret: process.env.PETFINDER_SECRET,
+  });
+  if (token && now < tokenExpiry) return token;
+  const res = await fetch(`${BASE_URL}/oauth2/token`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "client_credentials",
+      client_id: process.env.PETFINDER_KEY!,
+      client_secret: process.env.PETFINDER_SECRET!,
+    }),
+  });
+
+  if (!res.ok) {
+    console.log("there has been an errorrr");
+    throw new Error("Failed to fetch access token");
+  }
+  const data = await res.json();
+  token = data.access_token;
+  tokenExpiry = now + data.expires_in * 1000;
+  return token;
+}
+
+export async function fetchAnimals() {
+
+  //actual api
+  // const token = await getAccessToken();
+  // const res = await fetch(`${BASE_URL}/animals?limit=12`, {
+  //   headers: { Authorization: `Bearer ${token}` },
+  // });
+
+  // if (!res.ok) {
+  //   console.log("there has been an errorrr");
+  //   throw new Error("Failed to fetch animals");
+  // }
+  // const data = await res.json();
+  // return data.animals;
+
+
+  //Mock data
+  try {
+    const res = await fetch(`${BASE_URL}/animals`, {
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      console.error("Failed to fetch animals:", res.statusText);
+      throw new Error("Failed to fetch animals");
+    }
+
+    const data = await res.json();
+    return data.animals || data; // in case mock returns directly as array
+  } catch (error) {
+    console.error("Error fetching animals:", error);
+    throw error;
+  }
+}
+
+export async function fetchAnimalById(id: string) {
+
+  //actual api
+  // const token = await getAccessToken();
+  // const res = await fetch(`${BASE_URL}/animals/${id}`, {
+  //   headers: { Authorization: `Bearer ${token}` },
+  // });
+  // console.log(res, "animal by id response");
+  // if (!res.ok) throw new Error("Failed to fetch animal");
+  // const data = await res.json();
+  // return data.animals;
+
+  // mock api
+  // console.log(id, 'animal id')
+  try {
+    const res = await fetch(`${BASE_URL}/animals/${id}`, {
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      console.error("Failed to fetch animal by ID:", res.statusText);
+      throw new Error("Failed to fetch animal");
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching animal by ID:", error);
+    throw error;
+  }
+}
+
